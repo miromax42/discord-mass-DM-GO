@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package discord
 
 import (
@@ -19,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/instance"
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/instance"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
 func LaunchDMReact() {
@@ -302,7 +296,6 @@ func LaunchDMReact() {
 					case <-kill:
 						break Listener
 					}
-
 				} else {
 					err := observerInstance.StartWS()
 					if err != nil {

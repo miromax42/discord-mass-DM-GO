@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 type twoCaptchaSubmitResponse struct {
@@ -151,6 +145,7 @@ type EmbedAuthor struct {
 	IconURL      string `json:"icon_url,omitempty"`
 	ProxyIconURL string `json:"proxy_icon_url,omitempty"`
 }
+
 type MessageEmbedThumbnail struct {
 	URL      string `json:"url,omitempty"`
 	ProxyURL string `json:"proxy_url,omitempty"`
@@ -162,6 +157,7 @@ type EmbedProvider struct {
 	Name string `json:"name,omitempty"`
 	URL  string `json:"url,omitempty"`
 }
+
 type Embed struct {
 	Title string `json:"title,omitempty"`
 
@@ -179,11 +175,13 @@ type Embed struct {
 	Author    EmbedAuthor            `json:"author,omitempty"`
 	Fields    []EmbedField           `json:"fields,omitempty"`
 }
+
 type Emoji struct {
 	ID       string `json:"id,omitempty"`
 	Name     string `json:"name,omitempty"`
 	Animated bool   `json:"animated,omitempty"`
 }
+
 type Reaction struct {
 	Emojis Emoji `json:"emoji,omitempty"`
 	Count  int   `json:"count,omitempty"`

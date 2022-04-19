@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
@@ -28,6 +22,7 @@ type Config struct {
 	SuspicionAvoidance SuspicionAvoidance `yaml:"suspicion_avoidance"`
 	DMonReact          DMonReact          `yaml:"dm_on_react"`
 }
+
 type DirectMessage struct {
 	Delay      int  `yaml:"individual_delay"`
 	LongDelay  int  `yaml:"rate_limit_delay"`
@@ -46,6 +41,7 @@ type DirectMessage struct {
 	Block      bool `yaml:"block_after_dm"`
 	Close      bool `yaml:"close_dm_after_message"`
 }
+
 type ProxySettings struct {
 	Proxy           string `yaml:"proxy"`
 	ProxyFromFile   bool   `yaml:"proxy_from_file"`

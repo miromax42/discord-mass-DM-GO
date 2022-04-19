@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
@@ -12,14 +6,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 	"time"
 
-	"net/http"
-	"net/url"
-
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
 func GetReactions(channel string, message string, token string, emoji string, after string) ([]string, error) {
@@ -93,7 +86,6 @@ func (in *Instance) ContextProperties(invite, cookie string) (string, error) {
 		return "", err
 	}
 	return x, nil
-
 }
 
 func XContextGen(guildID string, channelID string, ChannelType float64) (string, error) {
@@ -109,7 +101,6 @@ func XContextGen(guildID string, channelID string, ChannelType float64) (string,
 	}
 	Enc := b64.StdEncoding.EncodeToString(jsonData)
 	return Enc, nil
-
 }
 
 func Bypass(client *http.Client, serverid string, token string, invite string) error {
@@ -274,7 +265,6 @@ func (in *Instance) Invite(Code string) error {
 
 	}
 	return fmt.Errorf("max retries exceeded")
-
 }
 
 func (in *Instance) Leave(serverid string) int {
@@ -323,7 +313,6 @@ func (in *Instance) React(channelID string, MessageID string, Emoji string) erro
 }
 
 func (in *Instance) Friend(Username string, Discrim int) (*http.Response, error) {
-
 	url := "https://discord.com/api/v9/users/@me/relationships"
 
 	fr := friendRequest{Username, Discrim}
@@ -342,13 +331,11 @@ func (in *Instance) Friend(Username string, Discrim int) (*http.Response, error)
 	}
 
 	resp, err := in.Client.Do(in.AtMeHeaders(req, cookie))
-
 	if err != nil {
 		return &http.Response{}, err
 	}
 
 	return resp, nil
-
 }
 
 func (in *Instance) CheckToken() int {
@@ -364,7 +351,6 @@ func (in *Instance) CheckToken() int {
 		return -1
 	}
 	return resp.StatusCode
-
 }
 
 func FindMessage(channel string, messageid string, token string) (string, error) {

@@ -1,17 +1,11 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
 	"strings"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
 func Scrape(ws *Connection, Guild string, Channel string, index int) error {
@@ -42,19 +36,18 @@ func Scrape(ws *Connection, Guild string, Channel string, index int) error {
 		Op:   14,
 		Data: payload,
 	})
-
 	if err != nil {
 		return err
 	}
 
 	return nil
-
 }
 
 type CustomEvent struct {
 	Op   int    `json:"op,omitempty"`
 	Data Custom `json:"d,omitempty"`
 }
+
 type Custom struct {
 	GuildID  interface{} `json:"guild_id"`
 	Limit    int         `json:"limit"`
@@ -62,12 +55,7 @@ type Custom struct {
 	Presence bool        `json:"presence"`
 }
 
-// Write a function which would input the connection, guildid, query, limit and presence.
-// The function would then make an Event struct and send it to the websocket.
-// The guild ID is to be put as a list of one item
-
 func ScrapeOffline(c *Connection, guild string, query string) error {
-
 	custom := Custom{
 		GuildID:  []string{guild},
 		Limit:    100,
@@ -98,13 +86,11 @@ func FindNextQueries(query string, lastName string, completedQueries []string, c
 	}
 	wantedCharIndex := indexQuery + len(query)
 	if wantedCharIndex >= len(lastName) {
-
 		return nil
 	}
 	wantedChar := lastName[wantedCharIndex]
 	queryIndexDone := strings.Index(chars, string(wantedChar))
 	if queryIndexDone == -1 {
-
 		return nil
 	}
 
@@ -134,5 +120,4 @@ func Subscribe(ws *Connection, guildid string) error {
 		return err
 	}
 	return nil
-
 }

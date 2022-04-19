@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package discord
 
 import (
@@ -21,13 +15,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/instance"
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/instance"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
 func LaunchMassDM() {
-
 	color.Cyan("Mass DM Advertiser/Spammer")
 	color.White("This will DM everyone in memberids.txt from your tokens")
 	members, err := utilities.ReadLines("memberids.txt")
@@ -113,7 +106,7 @@ func LaunchMassDM() {
 	var completed []string
 	var failed []string
 	var dead []string
-	var failedCount = 0
+	failedCount := 0
 	completed, err = utilities.ReadLines("completed.txt")
 	if err != nil {
 		color.Red("Error while opening completed.txt: %v", err)
@@ -157,7 +150,7 @@ func LaunchMassDM() {
 	// Setting information to windows titlebar by github.com/foxzsz
 	go func() {
 		for {
-			cmd := exec.Command("cmd", "/C", "title", fmt.Sprintf(`DMDGO [%d sent, %v failed, %d locked, %v avg. dms, %d tokens left]`, len(session), len(failed), len(dead), len(session)/len(instances), len(instances)-len(dead)))
+			cmd := exec.Command("cmd", "/C", "title", fmt.Sprintf(`[%d sent, %v failed, %d locked, %v avg. dms, %d tokens left]`, len(session), len(failed), len(dead), len(session)/len(instances), len(instances)-len(dead)))
 			_ = cmd.Run()
 		}
 	}()
@@ -548,7 +541,6 @@ func LaunchMassDM() {
 			}
 		}
 	}
-
 }
 
 type jsonResponse struct {

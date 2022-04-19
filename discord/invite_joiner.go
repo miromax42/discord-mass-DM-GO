@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package discord
 
 import (
@@ -11,9 +5,9 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/instance"
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/instance"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 	"github.com/zenthangplus/goccm"
 )
 
@@ -70,7 +64,6 @@ func LaunchinviteJoiner() {
 				}
 				time.Sleep(time.Duration(delay) * time.Second)
 				c.Done()
-
 			}(i)
 		}
 		c.WaitAllDone()

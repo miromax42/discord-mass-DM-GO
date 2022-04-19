@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
@@ -16,9 +10,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
 	"github.com/gorilla/websocket"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
 type Instance struct {
@@ -163,7 +157,6 @@ func GetEverything() (Config, []Instance, error) {
 		color.Red("[!] You may be using a malformed config.json")
 	}
 	return cfg, instances, nil
-
 }
 
 func SetMessages(instances []Instance, messages []Message) error {

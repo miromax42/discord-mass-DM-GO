@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
@@ -17,19 +11,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
-// Cookies are required for legitimate looking requests, a GET request to instance.com has these required cookies in it's response along with the website HTML
-// We can use this to get the cookies & arrange them in a string
-
 func (in *Instance) GetCookieString() (string, error) {
-
 	url := "https://discord.com"
 
 	req, err := http.NewRequest("GET", url, nil)
-
 	if err != nil {
 		color.Red("[%v] Error while making request to get cookies %v", time.Now().Format("15:04:05"), err)
 		return "", fmt.Errorf("error while making request to get cookie %v", err)
@@ -75,8 +64,8 @@ func (in *Instance) GetCookieString() (string, error) {
 	// }
 	cookies += "locale:en-US"
 	return cookies, nil
-
 }
+
 func (in *Instance) GetCfBm(m, r, cookies string) (string, error) {
 	site := fmt.Sprintf(`https://discord.com/cdn-cgi/bm/cv/result?req_id=%s`, r)
 	payload := fmt.Sprintf(
@@ -125,7 +114,6 @@ func (in *Instance) GetCfBm(m, r, cookies string) (string, error) {
 		cookies = cookies + cookie.Name + "=" + cookie.Value
 	}
 	return cookies, nil
-
 }
 
 func (in *Instance) OpenChannel(recepientUID string) (string, error) {
@@ -149,7 +137,6 @@ func (in *Instance) OpenChannel(recepientUID string) (string, error) {
 	}
 
 	resp, err := in.Client.Do(in.OpenChannelHeaders(req, cookie))
-
 	if err != nil {
 		return "", fmt.Errorf("error while getting response from open channel request %v", err)
 	}
@@ -180,7 +167,6 @@ func (in *Instance) OpenChannel(recepientUID string) (string, error) {
 	return channelSnowflake.ID, nil
 }
 
-// Inputs the Channel snowflake and sends them the message; outputs the response code for error handling.
 func (in *Instance) SendMessage(channelSnowflake string, memberid string) (http.Response, error) {
 	// Sending a random message incase there are multiple.
 	index := rand.Intn(len(in.Messages))
@@ -202,7 +188,6 @@ func (in *Instance) SendMessage(channelSnowflake string, memberid string) (http.
 
 	url := "https://discord.com/api/v9/channels/" + channelSnowflake + "/messages"
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(body)))
-
 	if err != nil {
 		return http.Response{}, fmt.Errorf("error while making request to send message %v", err)
 	}
@@ -304,7 +289,6 @@ func (in *Instance) UserInfo(userid string) (UserInf, error) {
 	}
 
 	if body == nil {
-
 		return UserInf{}, fmt.Errorf("body is nil")
 	}
 
@@ -318,7 +302,6 @@ func (in *Instance) UserInfo(userid string) (UserInf, error) {
 }
 
 func Ring(httpClient *http.Client, auth string, snowflake string) (int, error) {
-
 	url := "https://discord.com/api/v9/channels/" + snowflake + "/call"
 
 	p := RingData{
@@ -349,7 +332,6 @@ func Ring(httpClient *http.Client, auth string, snowflake string) (int, error) {
 	}
 	fmt.Println(string(body))
 	return resp.StatusCode, nil
-
 }
 
 func (in *Instance) CloseDMS(snowflake string) (int, error) {

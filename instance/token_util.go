@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 import (
@@ -20,12 +14,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 )
 
-// @me Discord Patch request to change Username
 func (in *Instance) NameChanger(name string) (http.Response, error) {
-
 	url := "https://discord.com/api/v9/users/@me"
 
 	data := NameChange{
@@ -38,7 +30,6 @@ func (in *Instance) NameChanger(name string) (http.Response, error) {
 	}
 
 	req, err := http.NewRequest("PATCH", url, strings.NewReader(string(bytes)))
-
 	if err != nil {
 		return http.Response{}, err
 	}
@@ -53,12 +44,9 @@ func (in *Instance) NameChanger(name string) (http.Response, error) {
 	}
 
 	return *resp, nil
-
 }
 
-// @me Discord Patch request to change Avatar
 func (in *Instance) AvatarChanger(avatar string) (http.Response, error) {
-
 	url := "https://discord.com/api/v9/users/@me"
 
 	avatar = "data:image/png;base64," + avatar
@@ -72,7 +60,6 @@ func (in *Instance) AvatarChanger(avatar string) (http.Response, error) {
 		return http.Response{}, err
 	}
 	req, err := http.NewRequest("PATCH", url, strings.NewReader(string(bytes)))
-
 	if err != nil {
 		return http.Response{}, err
 	}
@@ -87,14 +74,10 @@ func (in *Instance) AvatarChanger(avatar string) (http.Response, error) {
 	}
 
 	return *resp, nil
-
 }
 
-// Encoding images to b64
 func EncodeImg(pathToImage string) (string, error) {
-
 	image, err := os.Open(pathToImage)
-
 	if err != nil {
 		return "", err
 	}
@@ -125,7 +108,6 @@ func EncodeImg(pathToImage string) (string, error) {
 	}
 }
 
-// Get all file paths in a directory
 func GetFiles(dir string) ([]string, error) {
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {

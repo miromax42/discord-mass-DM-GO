@@ -1,9 +1,3 @@
-// Copyright (C) github.com/dankgrinder & github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package instance
 
 const (
@@ -29,7 +23,6 @@ const (
 
 type Intent int
 
-// Constants for the different bit offsets of intents
 const (
 	IntentsGuilds                 Intent = 1 << 0
 	IntentsGuildMembers           Intent = 1 << 1
@@ -100,12 +93,15 @@ type Ops struct {
 	Range interface{} `json:"range,omitempty"`
 	Op    string      `json:"op,omitempty"`
 }
+
 type Userinfo struct {
 	Member Member `json:"member,omitempty"`
 }
+
 type Member struct {
 	User User `json:"user,omitempty"`
 }
+
 type User struct {
 	ID            string `json:"id"`
 	Username      string `json:"username"`

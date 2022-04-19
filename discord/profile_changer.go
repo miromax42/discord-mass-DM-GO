@@ -1,9 +1,3 @@
-// Copyright (C) 2021 github.com/V4NSH4J
-//
-// This source code has been released under the GNU Affero General Public
-// License v3.0. A copy of this license is available at
-// https://www.gnu.org/licenses/agpl-3.0.en.html
-
 package discord
 
 import (
@@ -15,9 +9,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/V4NSH4J/discord-mass-dm-GO/instance"
-	"github.com/V4NSH4J/discord-mass-dm-GO/utilities"
 	"github.com/fatih/color"
+	"github.com/miromax42/discord-mass-DM-GO/instance"
+	"github.com/miromax42/discord-mass-DM-GO/utilities"
 	"github.com/zenthangplus/goccm"
 )
 
@@ -82,7 +76,6 @@ func LaunchNameChanger() {
 	}
 	c.WaitAllDone()
 	color.Green("[%v] All Done", time.Now().Format("15:04:05"))
-
 }
 
 func LaunchAvatarChanger() {
@@ -233,7 +226,6 @@ func LaunchHypeSquadChanger() {
 		}(i)
 	}
 	c.WaitAllDone()
-
 }
 
 func LaunchTokenChanger() {
@@ -298,5 +290,4 @@ func LaunchTokenChanger() {
 	}
 	c.WaitAllDone()
 	color.Green("[%v] All Done", time.Now().Format("15:04:05"))
-
 }
